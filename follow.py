@@ -4,7 +4,6 @@ import random
 import datetime
 from pytz import timezone
 
-
 # API_KEY =
 # API_SECRET =
 # ACCESS_TOKEN =
@@ -30,7 +29,7 @@ class Main:
     user_name = random.choice(user_names)
     object = api.get_user(screen_name=user_name)
     count = 0
-    max_users = 1
+    max_users = 15
     iteration = 1
 
     while count <= max_users:
@@ -41,7 +40,7 @@ class Main:
                     # Follow if not followed
                     follower.follow()
                     count = count + 1
-                    print('User Name: ' + str(follower.screen_name) + ' Followed')
+                    # print('User Name: ' + str(follower.screen_name) + ' Followed')
 
                     # Like first post
                     try:
@@ -53,13 +52,14 @@ class Main:
                         for t in top_tweets:
                             if not t.favorited:
                                 t.favorite()
-                                print('Top tweets favorited.')
+                                # print('Top tweets favorited.')
                                 time.sleep(10)
 
                     except tweepy.TweepError as e:
                         print(e.reason)
                         time.sleep(10)
 
+                    """
                     # Send DM
                     try:
                         api.send_direct_message(follower.id, dm_message)
@@ -67,6 +67,7 @@ class Main:
                         time.sleep(10)
                     except tweepy.TweepError as e:
                         print(e.reason)
+                    """
 
                     if count >= max_users:
                         break

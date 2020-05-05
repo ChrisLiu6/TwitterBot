@@ -27,7 +27,7 @@ class Main:
     time_str = get_time()
     dm_message = 'Go Bucks! Time: ' + time_str
     query = random.choice(query_list)
-    max_tweets = 1
+    max_tweets = 10
     count = 0
     iteration = 1
 
